@@ -1,0 +1,23 @@
+<h1>Tipos de Produtos</h1>
+
+<button (click)="create()">Inserir Tipo de Produto</button>
+
+<table *ngIf="productTypes.length">
+    <thead>
+      <tr>
+        <th>Descrição</th>
+        <th>UID</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let productType of productTypes">
+        <td>{{ productType.description }}</td>
+        <td>{{ productType.uid }}</td>
+        <td>
+            <span (click)="view(productType.uid)"> EDIT </span>
+            <span (click)="delete(productType.uid)"> DELETE </span>
+        </td>
+      </tr>
+    </tbody>
+</table>
