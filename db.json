@@ -1,20 +1,88 @@
 {
-    "products": [
-        { "id": "1", "productTypeUid": "stationery", "name": "Caneta Bic", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "2", "productTypeUid": "stationery", "name": "Marca-Texto Bic", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "3", "productTypeUid": "stationery", "name": "Lápis de cor Faber-Castell", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "4", "productTypeUid": "stationery", "name": "Apontador Faber-Castell", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "5", "productTypeUid": "stationery", "name": "Régua Tilibra", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "6", "productTypeUid": "stationery", "name": "Caderno 10 matérias Tilibra", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "7", "productTypeUid": "electronics", "name": "Smartphone Asus Zenphone", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "8", "productTypeUid": "electronics", "name": "Smartphone Samsung Galaxy", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "9", "productTypeUid": "electronics", "name": "Smartphone Xiaomi Redmi", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "10", "productTypeUid": "electronics", "name": "Notebook Asus Zenbook", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "11", "productTypeUid": "electronics", "name": "Notebook Dell Latitude", "createdAt": "2024-01-04T12:09:00Z" },
-        { "id": "12", "productTypeUid": "electronics", "name": "Notebook Lenovo Thinkpad", "createdAt": "2024-01-04T12:09:00Z" }
-    ],
-    "productTypes": [
-        { "uid": "stationery", "description": "Papelaria" },
-        { "uid": "electronics", "description": "Eletrônicos" }
-    ]
+  "products": [
+    {
+      "id": "1",
+      "productTypeId": "1",
+      "name": "Caneta Bic",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "2",
+      "productTypeId": "1",
+      "name": "Marca-Texto Bic",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "3",
+      "productTypeId": "1",
+      "name": "Lápis de cor Faber-Castell",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "4",
+      "productTypeId": "1",
+      "name": "Apontador Faber-Castell",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "5",
+      "productTypeId": "1",
+      "name": "Régua Tilibra",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "6",
+      "productTypeId": "1",
+      "name": "Caderno 10 matérias Tilibra",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "7",
+      "productTypeId": "2",
+      "name": "Smartphone Asus Zenphone",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "8",
+      "productTypeId": "2",
+      "name": "Smartphone Samsung Galaxy",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "9",
+      "productTypeId": "2",
+      "name": "Smartphone Xiaomi Redmi",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "10",
+      "productTypeId": "2",
+      "name": "Notebook Asus Zenbook",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "11",
+      "productTypeId": "2",
+      "name": "Notebook Dell Latitude",
+      "createdAt": "2024-01-04T12:09:00Z"
+    },
+    {
+      "id": "12",
+      "productTypeId": "2",
+      "name": "Notebook Lenovo Thinkpad",
+      "createdAt": "2024-01-04T12:09:00Z"
+    }
+  ],
+  "productTypes": [
+    {
+      "id": "1",
+      "uid": "stationery",
+      "description": "Papelaria"
+    },
+    {
+      "id": "2",
+      "uid": "electronics",
+      "description": "Eletrônicos"
+    }
+  ]
 }

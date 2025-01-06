@@ -8,6 +8,23 @@ import { Observable } from 'rxjs';
 })
 export class ProductsService extends BackendService {
   getProducts(): Observable<Product[]> {
-    return this.get('products');
+    return this.get('products?_embed=productType&_sort=name');
+  }
+
+  getProductById(id: string): Observable<Product> {
+    return this.get(`products/${id}`);
+  }
+
+  createProduct(product: Partial<Product>): Observable<Product> {
+    product.createdAt = (new Date()).toISOString()
+    return this.post('products', product);
+  }
+
+  updateProductById(id: string, product: Partial<Product>): Observable<Product> {
+    return this.put(`products/${id}`, product);
+  }
+
+  deleteProductById(id: string): Observable<any> {
+    return this.delete(`products/${id}`);
   }
 }

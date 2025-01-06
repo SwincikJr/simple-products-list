@@ -1,1 +1,11 @@
-<p>product-types-create works!</p>
+<h1>Novo Tipo de Produto</h1>
+
+<form [formGroup]="productTypeForm" (ngSubmit)="onSubmit()">
+    <label for="uid">UID: </label>
+    <input id="uid" type="text" formControlName="uid">
+
+    <label for="description">Descrição: </label>
+    <input id="description" type="text" formControlName="description">
+
+    <button type="submit" [disabled]="!productTypeForm.valid">Salvar</button>
+</form>

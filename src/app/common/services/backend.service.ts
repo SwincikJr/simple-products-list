@@ -12,6 +12,18 @@ export class BackendService {
     constructor(private _http: HttpClient) { }
 
     get(path: string): Observable<any> {
-        return this._http.get(`${this._baseUrl}/${path}`);
+      return this._http.get(`${this._baseUrl}/${path}`);
     } 
+
+    post(path: string, body: any): Observable<any> {
+      return this._http.post(`${this._baseUrl}/${path}`, body);
+    }
+
+    put(path: string, body: any): Observable<any> {
+      return this._http.put(`${this._baseUrl}/${path}`, body);
+    }
+
+    delete(path: string): Observable<any> {
+      return this._http.delete(`${this._baseUrl}/${path}`);
+    }
 }

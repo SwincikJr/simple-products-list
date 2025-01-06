@@ -1,6 +1,9 @@
+import { ProductType } from "./productType.interface"
+
 export interface Product {
     id: string,
-    productTypeUid: string,
+    productTypeId: string,
     name: string,
-    createdAt: string
+    createdAt: string,
+    productType?: ProductType
 }

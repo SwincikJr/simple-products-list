@@ -35,7 +35,11 @@ export class ProductTypesListComponent implements OnInit {
     return this._router.navigateByUrl(`productTypes/${id}`);
   }
 
-  delete(id: string) {
-    return alert('deletando id ' + id);
+  delete(id: string, description: string) {
+    const del = confirm(`Tem certeza que deseja deletar o Tipo de Produto ${description} e todos os Produtos deste tipo?`);
+    if (del) this._produtTypesService.deleteProductTypeById(id).subscribe({
+      next: this.ngOnInit.bind(this),
+      error: err => console.error(err)
+    })
   }
 }

@@ -1,1 +1,14 @@
-<p>products-create works!</p>
+<h1>Novo Produto</h1>
+
+<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <label for="name">Nome: </label>
+    <input id="name" type="text" formControlName="name">
+
+    <label for="product-type-id">Tipo do Produto: </label>
+    <select id="product-type-id" formControlName="productTypeId">
+        <option value="">Selecione o tipo do produto...</option>
+        <option *ngFor="let productType of productTypes" [ngValue]="productType.id">{{ productType.description }}</option>
+    </select>
+
+    <button type="submit" [disabled]="!productForm.valid">Salvar</button>
+</form>
