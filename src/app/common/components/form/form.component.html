@@ -1,0 +1,14 @@
+<h1>{{ formTitle }}</h1>
+
+<form [formGroup]="formGroup" (ngSubmit)="triggerSubmitFunc()">
+    <div *ngFor="let field of formEspec">
+      <label>{{ field.label }}: </label>
+      <input
+        *ngIf="field.type === 'text'"
+        type="text"
+        [formControlName]="field.name"
+      />
+    </div>
+
+    <button type="submit" [disabled]="!formGroup.valid">Salvar</button>
+</form>
