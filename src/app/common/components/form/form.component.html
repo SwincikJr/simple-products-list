@@ -8,6 +8,11 @@
         type="text"
         [formControlName]="field.name"
       />
+      <select *ngIf="field.type === 'select'" [formControlName]="field.name">
+        <option *ngFor="let option of field.options" [value]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
     </div>
 
     <button type="submit" [disabled]="!formGroup.valid">Salvar</button>
