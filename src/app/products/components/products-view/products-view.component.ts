@@ -2,13 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { ProductTypesService } from '../../services/product-types.service';
-import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProductType } from '../../interfaces/productType.interface';
 import { Product } from '../../interfaces/product.interface';
+import { productsFormEspec as pfe, productsViewExtraEspec } from '../../constants/products.constants';
+import { FormEspecItem } from '../../../common/interfaces/form-espec-item.interface';
+import { FormComponent } from '../../../common/components/form/form.component';
+import { ProductType } from '../../interfaces/productType.interface';
+import { FormEspecOption } from '../../../common/interfaces/form-espec-option.interface';
+
+const productsFormEspec = Array.from(pfe);
+productsFormEspec.push(productsViewExtraEspec);
 
 @Component({
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [FormComponent],
   selector: 'app-products-view',
   templateUrl: './products-view.component.html',
   styleUrl: './products-view.component.css'
@@ -16,23 +21,10 @@ import { Product } from '../../interfaces/product.interface';
 export class ProductsViewComponent implements OnInit {
   
   private _id: string = '';
-  private _formatedCreatedAt: string = '';
-  private _productTypes: ProductType[] = [];
 
-  productForm = new FormGroup({
-    id: new FormControl(''),
-    name: new FormControl('', [Validators.required]),
-    productTypeId: new FormControl('', [Validators.required]),
-    createdAt: new FormControl({ value: '', disabled: true })
-  });
-
-  get productTypes(): ProductType[] {
-    return this._productTypes;
-  }
-
-  get formatedCreatedAt(): string {
-    return this._formatedCreatedAt;
-  }
+  productsFormData: Partial<Product> = {};
+  
+  readonly productsFormEspec: FormEspecItem[] = productsFormEspec;
   
   constructor(
     private _router: Router,
@@ -41,14 +33,29 @@ export class ProductsViewComponent implements OnInit {
     private _productTypesService: ProductTypesService
   ) {}
 
+  private fillProductTypeOptions(productTypes: ProductType[]): void {
+    this.productsFormEspec[1].options = productTypes.map(t => ({
+      value: t.id,
+      label: t.description
+    } as FormEspecOption))
+  }
+
+  private fillProductsFormData(product: Product): void {
+    this.productsFormData = {
+      name: product.name,
+      productTypeId: product.productTypeId,
+      createdAt: (new Date(product.createdAt)).toLocaleString()
+    }
+  }
+
   private setProperties(params: Params): void {
     this._id = params['id']
     this._productTypesService.getProductTypes().subscribe({
-      next: res => this._productTypes = res,
+      next: this.fillProductTypeOptions.bind(this),
       error: err => console.error(err)
     })
     this._productsService.getProductById(this._id).subscribe({
-      next: res => { this.productForm.setValue(res); this.formatCreatedAt() },
+      next: this.fillProductsFormData.bind(this),
       error: err => console.error(err)
     })
   }
@@ -60,15 +67,11 @@ export class ProductsViewComponent implements OnInit {
     })
   }
 
-  onSubmit() {
-    const product = this.productForm.getRawValue();
-    this._productsService.updateProductById(this._id, product as Partial<Product>).subscribe({
+  onSubmit(product: Partial<Product>) {
+    delete product.createdAt;
+    this._productsService.updateProductById(this._id, product).subscribe({
       next: _ => this._router.navigateByUrl('products'),
       error: err => console.error(err)
     });
-  }
-
-  formatCreatedAt() {
-    this._formatedCreatedAt = (new Date(this.productForm.get('createdAt')?.value || '')).toLocaleString();
   }
 }

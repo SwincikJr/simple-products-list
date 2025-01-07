@@ -1,17 +1,4 @@
-<h1>Editar Produto</h1>
-
-<form [formGroup]="productForm" (ngSubmit)="onSubmit()">
-    <label for="name">Nome: </label>
-    <input id="name" type="text" formControlName="name">
-
-    <label for="product-type-uid">Tipo do Produto: </label>
-    <select id="product-type-id" formControlName="productTypeId">
-        <option value="">Selecione o tipo do produto...</option>
-        <option *ngFor="let productType of productTypes" [ngValue]="productType.id">{{ productType.description }}</option>
-    </select>
-
-    <label for="created-at">Data e Hora de criação: </label>
-    <span id="created-at"> {{ formatedCreatedAt }} </span>
-
-    <button type="submit" [disabled]="!productForm.valid">Salvar</button>
-</form>
+<app-form formTitle="Editar Produto"
+    [formEspec]="productsFormEspec"
+    [formData]="productsFormData"
+    (submitFunc)="onSubmit($event)"></app-form>
