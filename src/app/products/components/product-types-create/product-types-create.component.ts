@@ -4,7 +4,7 @@ import { ProductTypesService } from '../../services/product-types.service';
 import { ProductType } from '../../interfaces/productType.interface';
 import { FormComponent } from '../../../common/components/form/form.component';
 import { FormEspecItem } from '../../../common/interfaces/form-espec-item.interface';
-import { productTypeFormEspec } from '../../constants/product-types.constants';
+import { productTypeCreateFormEspec } from '../../constants/product-types.constants';
 
 @Component({
   imports: [FormComponent],
@@ -15,7 +15,7 @@ import { productTypeFormEspec } from '../../constants/product-types.constants';
 export class ProductTypesCreateComponent {
 
   productTypeFormData: Partial<ProductType> = {};
-  productTypeFormEspec: FormEspecItem[] = productTypeFormEspec;
+  productTypeFormEspec: FormEspecItem[] = productTypeCreateFormEspec;
 
   constructor(
     private _router: Router, 
