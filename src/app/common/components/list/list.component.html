@@ -1,0 +1,21 @@
+<h1>{{ listTitle }}</h1>
+
+<button (click)="triggerCreateFunc()">Inserir</button>
+
+<table *ngIf="data.length">
+    <thead>
+      <tr>
+        <th *ngFor="let column of columns">{{ column.label }}</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of data">
+        <td *ngFor="let column of columns">{{ item[column.name] }}</td>
+        <td>
+            <span (click)="triggerViewFunc(item)"> VIEW/EDIT </span>
+            <span (click)="triggerDeleteFunc(item)"> DELETE </span>
+        </td>
+      </tr>
+    </tbody>
+</table>
