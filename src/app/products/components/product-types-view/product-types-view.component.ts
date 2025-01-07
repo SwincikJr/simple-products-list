@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormComponent } from '../../../common/components/form/form.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -11,7 +10,7 @@ const productTypeFormEspec = Array.from(ptfe);
 productTypeFormEspec[0].disabled = true;
 
 @Component({
-  imports: [CommonModule, FormComponent],
+  imports: [FormComponent],
   selector: 'app-product-types-view',
   templateUrl: './product-types-view.component.html',
   styleUrl: './product-types-view.component.css'

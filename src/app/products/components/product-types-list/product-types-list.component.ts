@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ProductTypesService } from '../../services/product-types.service';
 import { ProductType } from '../../interfaces/productType.interface';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 import { ListComponent } from '../../../common/components/list/list.component';
 import { List } from '../../../common/classes/list.abstract';
 import { Column } from '../../../common/interfaces/column.interface';
 
 @Component({
-  imports: [CommonModule, ListComponent],
+  imports: [ListComponent],
   selector: 'app-product-types-list',
   templateUrl: './product-types-list.component.html',
   styleUrl: './product-types-list.component.css'

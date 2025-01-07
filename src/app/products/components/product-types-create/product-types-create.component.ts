@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductTypesService } from '../../services/product-types.service';
@@ -8,7 +7,7 @@ import { FormEspecItem } from '../../../common/interfaces/form-espec-item.interf
 import { productTypeFormEspec } from '../../constants/product-types.constants';
 
 @Component({
-  imports: [CommonModule, FormComponent],
+  imports: [FormComponent],
   selector: 'app-product-types-create',
   templateUrl: './product-types-create.component.html',
   styleUrl: './product-types-create.component.css'
