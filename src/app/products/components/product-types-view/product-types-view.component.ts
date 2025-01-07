@@ -4,8 +4,11 @@ import { FormComponent } from '../../../common/components/form/form.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ProductTypesService } from '../../services/product-types.service';
 import { ProductType } from '../../interfaces/productType.interface';
-import { Validators } from '@angular/forms';
+import { productTypeFormEspec as ptfe } from '../../constants/product-types.constants';
 import { FormEspecItem } from '../../../common/interfaces/form-espec-item.interface';
+
+const productTypeFormEspec = Array.from(ptfe);
+productTypeFormEspec[0].disabled = true;
 
 @Component({
   imports: [CommonModule, FormComponent],
@@ -16,23 +19,9 @@ import { FormEspecItem } from '../../../common/interfaces/form-espec-item.interf
 export class ProductTypesViewComponent implements OnInit {
   
   private _id: string = '';
-  
-  productTypeFormEspec: FormEspecItem[] = [
-    { 
-      name: 'uid', 
-      label: 'UID', 
-      type: 'text',
-      disabled: true
-    },
-    {
-      name: 'description',
-      label: 'Descrição',
-      type: 'text',
-      validators: [Validators.required]
-    },
-  ];
 
   productTypeFormData: Partial<ProductType> = {};
+  productTypeFormEspec: FormEspecItem[] = productTypeFormEspec;
 
   constructor(
     private _router: Router,

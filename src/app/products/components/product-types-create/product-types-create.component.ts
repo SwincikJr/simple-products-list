@@ -1,22 +1,22 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductTypesService } from '../../services/product-types.service';
 import { ProductType } from '../../interfaces/productType.interface';
+import { FormComponent } from '../../../common/components/form/form.component';
+import { FormEspecItem } from '../../../common/interfaces/form-espec-item.interface';
+import { productTypeFormEspec } from '../../constants/product-types.constants';
 
 @Component({
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, FormComponent],
   selector: 'app-product-types-create',
   templateUrl: './product-types-create.component.html',
   styleUrl: './product-types-create.component.css'
 })
 export class ProductTypesCreateComponent {
 
-  productTypeForm = new FormGroup({
-    uid: new FormControl('', [Validators.required]),
-    description: new FormControl('', [Validators.required])
-  })
+  productTypeFormData: Partial<ProductType> = {};
+  productTypeFormEspec: FormEspecItem[] = productTypeFormEspec;
 
   constructor(
     private _router: Router, 
@@ -30,10 +30,9 @@ export class ProductTypesCreateComponent {
     });
   }
 
-  onSubmit(): void {
-    const productType = this.productTypeForm.getRawValue();
-    this._productTypesService.getProductTypeByUid(productType.uid as string).subscribe({
-      next: res => !res.length ? this.createProductType(productType as Partial<ProductType>) : alert(`Este UID já está em uso.`),
+  onSubmit(productType: Partial<ProductType>): void {
+    this._productTypesService.getProductTypeByUid(productType.uid!).subscribe({
+      next: res => !res.length ? this.createProductType(productType) : alert(`Este UID já está em uso.`),
       error: err => console.error(err)
     })
   }
