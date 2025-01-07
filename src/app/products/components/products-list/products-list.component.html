@@ -1,24 +1,7 @@
-<h1>Produtos</h1>
-
-<button (click)="create()">Inserir Produto</button>
-
-<table *ngIf="products.length">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Tipo</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of products">
-        <td>{{ product.name }}</td>
-        <td>{{ product.productType?.description }}</td>
-        <td>
-            <span (click)="view(product.id)"> EDIT </span>
-            <span (click)="delete(product.id, product.name)"> DELETE </span>
-        </td>
-      </tr>
-    </tbody>
-</table>
-
+<app-list listTitle="Produtos"
+  createRoute="products/new"
+  [data]="products" 
+  [columns]="productColumns"
+  (createFunc)="create()"
+  (viewFunc)="view($event)"
+  (deleteFunc)="delete($event)"></app-list>
