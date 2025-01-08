@@ -1,0 +1,20 @@
+@media (max-width: 599px) {
+    .container {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .app-menu {
+        width: 100%;
+        height: 60px;
+    }
+
+    .app-content {
+        float: left;
+        width: 100%;
+        background-color: #f4f4f4;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 10px;
+    }
+}

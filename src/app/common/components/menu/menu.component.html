@@ -1,2 +1,14 @@
-<p (click)="navigate('products')">Produtos</p>
-<p (click)="navigate('productTypes')">Tipos de Produto</p>
+<nav class="menu" [ngClass]="{ expanded: isHovered }" 
+     (mouseenter)="isHovered = true" 
+     (mouseleave)="isHovered = false">
+  <ul>
+    <li [ngClass]="{ active: currentRoute.indexOf('/products') > -1 }" (click)="navigate('/products')">
+      <span class="icon">Pr</span>
+      <span class="label">Produtos</span>
+    </li>
+    <li [ngClass]="{ active: currentRoute.indexOf('/productTypes') > -1 }" (click)="navigate('/productTypes')">
+      <span class="icon">Tp</span>
+      <span class="label">Tipos de Produtos</span>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,17 @@
+@media (min-width: 600px) {
+    .container {
+        display: flex;
+        height: 100vh;
+    }
+
+    .app-menu {
+        width: 80px;
+    }
+
+    .app-content {
+        flex-grow: 1;
+        background-color: #f4f4f4;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}

@@ -6,6 +6,10 @@ Este projeto foi gerado utilizando [Angular CLI](https://github.com/angular/angu
 
 Este projeto foi desenvolvido utilizando Node.js versão v22.12.0 e NPM versão 10.9.0
 
+## Portas
+
+Ao executar este projeto, as portas 3000 e 4200 serão requisitadas
+
 ## Executando o projeto
 
 Para iniciar o projeto localmente, instale as dependências e execute o script de inicialização:

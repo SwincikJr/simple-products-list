@@ -9,8 +9,8 @@ import { MenuComponent } from './common/components/menu/menu.component';
     MenuComponent
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css', './app.component.css-mobile.css']
 })
 export class AppComponent {
-  title = 'simple-products-list';
+  title = 'Meus Produtos';
 }
